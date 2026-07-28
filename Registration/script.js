@@ -2,7 +2,6 @@ document.getElementById("registrationForm").addEventListener("submit", function(
 
     event.preventDefault();
 
-
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
     let age = document.getElementById("age").value.trim();
@@ -10,46 +9,43 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     let nameError = document.getElementById("nameError");
     let emailError = document.getElementById("emailError");
     let ageError = document.getElementById("ageError");
+    let success=document.getElementById("success");
 
-  
     nameError.textContent = "";
     emailError.textContent = "";
     ageError.textContent = "";
 
     let isValid = true;
 
-   
-    if (name.value.trim() === "") {
+
+    if (name === "") {
         nameError.textContent = "Name is required.";
         isValid = false;
     }
-
 
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (email === "") {
         emailError.textContent = "Email is required.";
         isValid = false;
-    }
-    else if (!emailPattern.test(email)) {
+    } else if (!emailPattern.test(email)) {
         emailError.textContent = "Enter a valid email.";
         isValid = false;
     }
 
-    
+
     if (age === "") {
         ageError.textContent = "Age is required.";
         isValid = false;
-    }
-    else if (age < 18 || age > 100) {
+    } else if (age < 18 || age > 100) {
         ageError.textContent = "Age must be between 18 and 100.";
         isValid = false;
     }
 
-
     if (isValid) {
-        document.getElementById("registrationForm").submit();
-        alert("Registration Successful!!!")
+        // alert("Registration Successful!!!");
+        document.getElementById("registrationForm").submit(); 
+        success.textContent="Registration Success";
     }
 
 });
